@@ -1,0 +1,39 @@
+[ROLE & CONTEXT]
+Bạn là một Senior Business Analyst kiêm Software Architect có 10 năm kinh nghiệm trong các dự án Ngân hàng số và Hệ thống Định danh điện tử (eKYC). Hãy giúp tôi biên soạn một tài liệu Đặc tả yêu cầu phần mềm (SRS - Software Requirements Specification) hoàn chỉnh, chuyên nghiệp theo chuẩn quốc tế IEEE phục vụ cho đội ngũ Development và QA/Tester của dự án ABC Bank eKYC.
+
+[INPUT DATA - BUSINESS SCENARIO]
+- Tên dự án: Hệ thống mở tài khoản trực tuyến qua định danh eKYC - ABC Bank.
+- Mục tiêu: Định danh tự động không can thiệp thủ công ("Zero manual operation").
+- Luồng xử lý chính: Đăng ký ban đầu (OTP SĐT) -> Chụp CCCD (OCR trích xuất) -> Quét mặt (Liveness Check) -> Đối chiếu thông tin sinh trắc học và kiểm tra danh sách đen (Blacklist/AML) -> Gọi API Core Banking tự động kích hoạt tài khoản nếu Confidence Score >= 95%. Chuyển luồng manual review đối với hồ sơ vùng xám (75%-94%).
+
+[TASK]
+Hãy xuất một tài liệu SRS chi tiết, toàn diện, không viết tóm tắt hay lược bỏ, bao gồm 5 phần bắt buộc sau:
+
+PHẦN 1: INTRODUCTION (GIỚI THIỆU CHUNG)
+1. Purpose (Mục đích tài liệu).
+2. Scope (Phạm vi hệ thống eKYC - Chỉ rõ những gì nằm trong và ngoài hệ thống).
+3. Definitions, Acronyms (Bảng thuật ngữ: eKYC, OCR, Liveness Check, Core Banking, AML, PEP, FAR, FRR).
+
+PHẦN 2: OVERALL DESCRIPTION (MÔ TẢ TỔNG QUAN)
+1. Product Perspective (Góc nhìn sản phẩm trong hệ sinh thái ABC Bank).
+2. User Classes and Characteristics (Mô tả chi tiết nhóm người dùng: Khách hàng vãng lai, Kiểm soát viên rủi ro, Quản trị viên hệ thống).
+3. Constraints (Các giới hạn ràng buộc: Ràng buộc pháp lý từ NHNN Việt Nam, Ràng buộc công nghệ thiết bị di động, Mã hóa bảo mật thông tin).
+
+PHẦN 3: SPECIFIC FUNCTIONAL REQUIREMENTS (YÊU CẦU CHỨC NĂNG CHI TIẾT)
+Yêu cầu đặc tả chi tiết từng Module theo cấu trúc: Mô tả, Tác nhân, Tiền điều kiện (Pre-conditions), Hậu điều kiện (Post-conditions), và Luồng xử lý chi tiết (Luồng chính & Luồng lỗi).
+1. Module 01: Đăng ký tài khoản & Xác thực OTP.
+2. Module 02: Upload & Đọc thông tin CCCD (OCR).
+3. Module 03: Xác thực khuôn mặt sinh trắc học (Liveness Check & Face Matching).
+4. Module 04: Đối chiếu điều kiện và Tự động kích hoạt tài khoản (Core Banking Integration).
+
+PHẦN 4: NON-FUNCTIONAL REQUIREMENTS (YÊU CẦU PHI CHỨC NĂNG)
+1. Security: Mã hóa dữ liệu truyền tải (TLS 1.3), dữ liệu lưu trữ (AES-256), chuẩn an toàn PCI-DSS.
+2. Performance: Thời gian phản hồi API xử lý ảnh, lưu lượng CCU chịu tải hệ thống.
+3. Availability & Reliability: Tiêu chuẩn SLA hoạt động và tỷ lệ sai số kỹ thuật (FAR, FRR).
+
+PHẦN 5: VISUAL DIAGRAM (SƠ ĐỒ TRỰC QUAN)
+Sinh mã Mermaid.js để vẽ Use Case Diagram thể hiện rõ sự tương tác giữa Khách hàng, Hệ thống eKYC, Hệ thống Core Banking, dịch vụ OCR/Face Matching và Kiểm soát viên.
+
+[TONE & FORMAT]
+- Ngôn ngữ: Tiếng Việt chuyên ngành Công nghệ/Ngân hàng kỹ thuật cao.
+- Trình bày định dạng Markdown sạch sẽ, sử dụng bảng biểu tối đa để đặc tả chức năng và phi chức năng để lập trình viên và Tester dễ đọc vị và tạo TestCase.
